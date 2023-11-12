@@ -1,6 +1,6 @@
 import streamlit as st
 st.title("**COVID 19**")
-st.subheader('El Perú se encuentra entre los países con menor tasa de enfermos confirmados del mundo.')
+st.subheader('El Perú se encuentra entre los países con mayor tasa de enfermos confirmados del mundo.')
 st.caption("**En este momento hay 221.727 personas fallecidas por coronavirus.**")
 import pandas as pd
 import numpy as np
@@ -39,7 +39,7 @@ import datetime
 d = st.date_input(
 "Fecha de decenso",
 datetime.date(2019, 11, 6))
-st.write('feha de fallecimiento:', d)
+st.write('fecha de fallecimiento:', d)
 
 from datetime import datetime
 
@@ -47,7 +47,6 @@ st.link_button("ver en linea", "https://www.datosabiertos.gob.pe/dataset/falleci
 st.divider()
 
 start_time = st.slider("Cifras de mortalidad", value=datetime(2022, 10, 1), format="DD/MM/YY")
-
 
 
 
@@ -61,6 +60,9 @@ chart_data = pd.DataFrame(
 
 st.line_chart(chart_data, x="col1", y="col2", color="col3")
 
+
+
+
 st.write("Diversas ubicaciones")
 # Crear un DataFrame con coordenadas de Perú (usando las coordenadas aproximadas de Lima)
 peru_coordinates = pd.DataFrame({
@@ -72,6 +74,24 @@ peru_coordinates = pd.DataFrame({
 # Visualizar los datos en un mapa centrado en Perú
 st.map(peru_coordinates)
 
+
+st.caption("Algunos datos adicionales")
+df = pd.DataFrame({
+    "columna 1": [15, 22, 34, 50, 45],
+    "columna 2": [41, 51, 61, 10, 20],
+    "columna 3": [10, 20, 35, 52, 10],
+    "columna 4": [18, 28, 30, 45, 20],
+    "columna 5": [10, 20, 30, 20, 80]
+})
+
+df.columns = ["Edad", "Cantidad por dia", "cantidad por horas", "UUI", "UBIGEO"]
+
+text = "Edad", "Cantidad por dia", "cantidad por horas", "UUI", "UBIGEO"
+
+style = {"color": "#6521", "background-color": "#ccc", "cursor": "pointer"}
+
+
+st.table(df)
 
 
 
